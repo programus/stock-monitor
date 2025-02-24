@@ -3,6 +3,7 @@ services:
     build: .
     container_name: stock-notify
     image: programus/stock-notify:latest
+    pull_policy: always
     ports:
       - "3000:3000"
     volumes:
