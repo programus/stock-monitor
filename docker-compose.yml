@@ -1,0 +1,17 @@
+services:
+  app:
+    build: .
+    container_name: stock-notify
+    image: stock-notify:latest
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    environment:
+      - WX_UID=UID_05vYGKs7a28GI3Dpp16vDuGIagXw
+      - WX_PUSH_URL=https://wxpusher.zjiecode.com/api/send/message/SPT_utRDPNmSiUlV66YTaxWXtND159b3/{message}
+      - STOCK_CODE=600519
+      - STOCK_DATA_PERIOD=10y
+      - STOCK_NOTIFY_PRICE=1800
+      - STOCK_FORECAST_DURATION=30

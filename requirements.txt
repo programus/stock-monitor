@@ -1,0 +1,5 @@
+numpy~=1.26.4
+pmdarima~=2.0.4
+akshare~=1.16.10
+statsmodels~=0.14.4
+matplotlib~=3.10.0
