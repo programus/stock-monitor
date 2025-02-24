@@ -2,7 +2,7 @@ services:
   app:
     build: .
     container_name: stock-notify
-    image: stock-notify:latest
+    image: programus/stock-notify:latest
     ports:
       - "3000:3000"
     volumes:

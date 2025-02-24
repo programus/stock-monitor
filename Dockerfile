@@ -5,5 +5,5 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
-RUN crontab -u root crontab
+RUN crontab -u root ./crontab
 CMD [ "cron", "-f" ]

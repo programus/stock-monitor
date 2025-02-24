@@ -73,6 +73,8 @@ def notify(forecast_df: pd.DataFrame, latest_price: float, notify_price: float):
         print(f'发送消息: {message}')
         url = url_template.format(message=urllib.parse.quote(message))
         requests.get(url)
+    else:
+        print('股票价格未超过，无需发送通知。')
 
 
 def link_forecast_and_date(forecast_result: pd.Series, start_date: datetime) -> pd.DataFrame:
@@ -88,6 +90,7 @@ if __name__ == '__main__':
     forecast_duration = os.environ.get('STOCK_FORECAST_DURATION', '30')
     notify_price = os.environ.get('STOCK_NOTIFY_PRICE', '1800')
     today = datetime.today()
+    print(f'==== {today} ====')
     start_date = calculate_date_complex_duration(today, f'-{date_delta}').strftime('%Y%m%d')
     end_date = today.strftime('%Y%m%d')
 
@@ -102,3 +105,6 @@ if __name__ == '__main__':
     forecast_df = link_forecast_and_date(forecast_result, forecast_from_date)
 
     notify(forecast_df, get_latest_price(stock_raw_data), float(notify_price))
+
+    print('Done.')
+    print()
